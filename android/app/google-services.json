@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "862850993120",
+    "project_id": "tamarket-1d8b3",
+    "storage_bucket": "tamarket-1d8b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:862850993120:android:cd84f33be15addc3297985",
+        "android_client_info": {
+          "package_name": "com.example.tamarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "862850993120-6rh4rlqb2dq3s3naccm5dntt1l7nodt7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqRn-A6hlRAzrJH9UP0wVcprRgBx1q748"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "862850993120-6rh4rlqb2dq3s3naccm5dntt1l7nodt7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
