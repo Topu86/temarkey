@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tamarket/page/Login_page.dart';
+import 'package:tamarket/page/userfrom.dart';
 
 
 
@@ -14,18 +16,22 @@ class Singup extends StatefulWidget {
 class _State extends State<Singup> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _phoneController = TextEditingController();
+  TextEditingController _addressController = TextEditingController();
+  TextEditingController _confrompassword = TextEditingController();
   bool _obscureText = true;
 
   signUp()async{
     try {
       UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _emailController.text,
-          password: _passwordController.text
+          password: _passwordController.text,
       );
       var authCredential = userCredential.user;
       print(authCredential!.uid);
       if(authCredential.uid.isNotEmpty){
-        Navigator.push(context, CupertinoPageRoute(builder: (_)=>Login()));
+        Navigator.push(context, CupertinoPageRoute(builder: (_)=>UserForm()));
       }
       else{
         Fluttertoast.showToast(msg: "Something is wrong");
@@ -50,75 +56,29 @@ class _State extends State<Singup> {
       // backgroundColor: Colors.deepOrange,
         body: Column(
           children: [
-            Container(
-              height: 150,
-              width: 100,
-            ),
+            Container(height: 300,),
             Padding(
-                padding: EdgeInsets.all(15),
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(15),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                          prefixIcon: Icon(Icons.person),
-                          filled: true,
-                          labelText: 'Full Name',
-                          hintText: 'Enter Your Full Name',
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(15),
-                      child: TextField(
-                        controller: _emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.email),
-                          filled: true,
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                          labelText: 'E-mail adress',
-                          hintText: 'Enter E-mail adress',
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(15),
-                      child: TextField(
-                        keyboardType: TextInputType.streetAddress,
-                        decoration: InputDecoration(
-                          filled: true,
-                          hoverColor: Colors.deepPurpleAccent,
-                          prefixIcon: Icon(Icons.home_sharp),
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                          labelText: 'Adress',
-                          hintText: 'Enter Your Adress',
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(15),
-                      child: TextField(
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          filled: true,
-                          prefixIcon: Icon(Icons.phone),
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                          labelText: 'Phone Number',
-                          hintText: 'Enter Your Phone Number',
-                        ),
-                      ),
-                    ),
+              padding: EdgeInsets.all(15),
+              child: TextField(
+                controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.email),
+                  filled: true,
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                  labelText: 'E-mail adress',
+                  hintText: 'Enter E-mail adress',
+                ),
+              ),
+            ),
                     Padding(
                       padding: EdgeInsets.all(15),
                       child: TextField(
                         controller: _passwordController,
                         keyboardType: TextInputType.visiblePassword,
-                        obscureText: true,
+                        obscureText: _obscureText,
                         decoration: InputDecoration(
+
                           filled: true,
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
                           labelText: 'Password',
@@ -138,21 +98,6 @@ class _State extends State<Singup> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(15),
-                      child: TextField(
-                        keyboardType: TextInputType.visiblePassword,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          filled: true,
-                          // fillColor: Color(0xFFDEB887),
-                          suffixIcon: Icon(Icons.visibility),
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                          labelText: 'Confrom Password',
-                          hintText: 'Enter Confrom Password',
-                        ),
-                      ),
-                    ),
                     RaisedButton(
                       textColor: Colors.white,
                       color: Colors.blue,
@@ -163,9 +108,6 @@ class _State extends State<Singup> {
                     )
                   ],
                 )
-            ),
-          ],
-        )
     );
   }
 }

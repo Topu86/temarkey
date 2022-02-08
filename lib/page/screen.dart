@@ -1,7 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:tamarket/page/mainhome.dart';
+import 'Login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -11,7 +10,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Timer(Duration(seconds: 3),()=>Navigator.push(context, MaterialPageRoute(builder: (_)=>BottomNavigationBarClass())));
+    Timer(Duration(seconds: 3),()=>Navigator.push(context,
+        MaterialPageRoute(builder: (_)=>Login())));
     super.initState();
   }
   @override

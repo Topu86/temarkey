@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:tamarket/page/homepage.dart';
+import 'package:tamarket/page/userfrom.dart';
 
 import 'page/screen.dart';
 
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
 
-      home: SplashScreen(),
+      home: HomePage(),
     );
   }
 }
