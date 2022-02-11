@@ -1,6 +1,9 @@
 import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'Login_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tamarket/const/AppColors.dart';
+import 'package:tamarket/ui/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -10,14 +13,13 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Timer(Duration(seconds: 3),()=>Navigator.push(context,
-        MaterialPageRoute(builder: (_)=>Login())));
+    Timer(Duration(seconds: 3),()=>Navigator.push(context, CupertinoPageRoute(builder: (_)=>LoginScreen())));
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepOrange,
+      backgroundColor: AppColors.deep_orange,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -29,10 +31,10 @@ class _SplashScreenState extends State<SplashScreen> {
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 44),
+                    fontSize: 44.sp),
               ),
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
               CircularProgressIndicator(
                 color: Colors.white,
